@@ -33,15 +33,6 @@ const PLACES = [
     lng: 27.9147
   },
   {
-    id: 4,
-    name: "Staria Chinar",
-    category: "Restaurant",
-    description: "Традиционен български ресторант, предлагащ вкусна храна в приятна атмосфера.",
-    city: "Varna",
-    lat: 43.2050,
-    lng: 27.9100
-  },
-  {
     id: 5,
     name: "Varna Mall",
     category: "Local Business",
