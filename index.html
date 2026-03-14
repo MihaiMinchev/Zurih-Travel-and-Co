@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zurih Travel & Co — Discover Varna</title>
   <meta name="description" content="Zurih Travel & Co is your curated digital guide to the finest tourist spots, local cafes, vibrant restaurants, and hidden local businesses in Varna, Bulgaria." />
-  <meta property="og:title" content="Zurih Travel & Co — Discover Varna" />
-  <meta property="og:description" content="Your curated guide to Varna's finest places." />
-  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet" />
@@ -15,12 +12,16 @@
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Navbar -->
   <header class="navbar" id="navbar">
     <div class="container navbar-inner">
       <a href="#home" class="brand" data-page="home">
         <div class="brand-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
         </div>
         <span class="brand-name">Zurih Travel <span class="brand-accent">& Co</span></span>
       </a>
@@ -28,8 +29,13 @@
       <nav class="nav-links">
         <a href="#home" class="nav-link active" data-page="home">Home</a>
         <a href="#directory" class="nav-link" data-page="directory">Directory</a>
+        <a href="#guides" class="nav-link" data-page="guides">Guides</a>
         <a href="#map" class="nav-btn" data-page="map">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/>
+            <line x1="9" y1="3" x2="9" y2="18"/>
+            <line x1="15" y1="6" x2="15" y2="21"/>
+          </svg>
           Explore Varna
         </a>
       </nav>
@@ -38,37 +44,35 @@
 
   <!-- ==================== HOME PAGE ==================== -->
   <section id="home" class="page active">
-    <!-- Hero -->
     <div class="hero">
       <div class="hero-bg">
-        <img
-          src="https://pixabay.com/get/ge5a7d966bf1798411ac8c2cc1607fee348f3440c1f666148df649cba2f433ecaf6702455ab0b70f0adbe820486b934214db25783913aa773af709cdf24a47572_1280.jpg"
-          alt="Varna Coastline"
-          class="hero-img"
-        />
+        <img src="https://pixabay.com/get/ge5a7d966bf1798411ac8c2cc1607fee348f3440c1f666148df649cba2f433ecaf6702455ab0b70f0adbe820486b934214db25783913aa773af709cdf24a47572_1280.jpg" alt="Varna Coastline" class="hero-img" />
         <div class="hero-overlay"></div>
       </div>
       <div class="container hero-content">
         <div class="hero-badge">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
           Version 1.0 &bull; Varna Edition
         </div>
-        <h1 class="hero-title">
-          Discover the Heart of <em class="hero-accent">Varna</em>
-        </h1>
+        <h1 class="hero-title">Discover the Heart of <em class="hero-accent">Varna</em></h1>
         <p class="hero-subtitle">
-          Zurih Travel &amp; Co is your curated digital guide to the finest tourist spots, local cafes, vibrant restaurants, and hidden local businesses.
+          Zurih Travel & Co is your curated digital guide to the finest tourist spots, local cafes, vibrant restaurants, and hidden local businesses.
         </p>
         <div class="hero-actions">
           <a href="#map" class="btn btn-primary btn-lg" data-page="map">
             Explore Varna Map
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
           </a>
         </div>
       </div>
     </div>
 
-    <!-- Mission Section -->
     <div class="section-mission">
       <div class="container">
         <div class="section-header">
@@ -76,37 +80,6 @@
           <p class="section-desc">
             We are building the technical and conceptual foundation for the future of localized travel. Version 1.0 focuses purely on creating a clean, organized, and beautifully presented directory of Varna's essential locations.
           </p>
-        </div>
-
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </div>
-            <h3 class="feature-title">Tourist Places</h3>
-            <p class="feature-desc">Iconic landmarks, museums, and historical sites.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-            </div>
-            <h3 class="feature-title">Local Cafes</h3>
-            <p class="feature-desc">The best coffee spots and relaxed environments.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
-            </div>
-            <h3 class="feature-title">Restaurants</h3>
-            <p class="feature-desc">Culinary experiences ranging from traditional to modern.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <h3 class="feature-title">Local Businesses</h3>
-            <p class="feature-desc">Boutiques, artisan shops, and local services.</p>
-          </div>
         </div>
       </div>
     </div>
@@ -127,49 +100,33 @@
     </div>
   </section>
 
+  <!-- ==================== BLOG / GUIDES PAGE ==================== -->
+  <section id="guides" class="page">
+    <div class="container section-gap">
+      <h2 class="section-title">Travel Guides & Articles</h2>
+      <div class="articles-grid" id="articles-grid"></div>
+    </div>
+  </section>
+
   <!-- ==================== MAP PAGE ==================== -->
   <section id="map" class="page">
-    <div class="map-page-header">
-      <div class="container">
-        <h1 class="map-page-title">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Varna Guide Map
-        </h1>
-        <p class="map-page-subtitle" id="map-subtitle">Click on any place to see it on the map</p>
-      </div>
-    </div>
-    <div class="container section-gap">
-      <div class="map-layout">
-        <!-- Map iframe -->
-        <div class="map-panel">
-          <div class="map-wrap">
-            <iframe
-              id="map-iframe"
-              title="Varna Map"
-              width="100%"
-              height="500"
-              style="border:0;display:block;"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=27.8%2C43.15%2C28%2C43.25&layer=mapnik&marker=43.2141%2C27.9147"
-              allowfullscreen
-              loading="lazy"
-            ></iframe>
-            <div class="map-footer" id="map-footer">
-              <p>📍 Varna, Bulgaria</p>
-            </div>
-          </div>
+    <div class="map-layout container section-gap">
+      <div class="map-panel">
+        <div class="map-wrap">
+          <div id="map-container" style="height:500px; width:100%;"></div>
+          <div class="map-footer">Map loaded for Varna</div>
         </div>
-
-        <!-- Sidebar -->
-        <div class="map-sidebar">
-          <div class="sidebar-panel">
-            <h2 class="sidebar-title" id="sidebar-title">5 Places</h2>
-            <div class="sidebar-list" id="sidebar-list"></div>
-          </div>
-
-          <!-- Legend -->
-          <div class="legend-panel" id="legend-panel">
-            <h3 class="legend-title">Categories</h3>
-            <div class="legend-list" id="legend-list"></div>
+      </div>
+      <div class="map-sidebar">
+        <div class="sidebar-panel">
+          <h3 class="sidebar-title">Filters</h3>
+          <!-- Filters here -->
+        </div>
+        <div class="legend-panel">
+          <h3 class="legend-title">Legend</h3>
+          <div class="legend-list">
+            <div class="legend-item"><svg width="16" height="16"><circle cx="8" cy="8" r="6"/></svg> Restaurant</div>
+            <div class="legend-item"><svg width="16" height="16"><circle cx="8" cy="8" r="6"/></svg> Cafe</div>
           </div>
         </div>
       </div>
@@ -180,7 +137,11 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
         <span>Zurih Travel &amp; Co</span>
       </div>
       <p class="footer-tagline">
