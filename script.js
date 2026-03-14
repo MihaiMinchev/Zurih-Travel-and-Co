@@ -1,289 +1,247 @@
-// ===============================
-// ZURIH TRAVEL & CO MAIN SCRIPT
-// ===============================
+/* ============================================================
+   Zurih Travel & Co — Static Site Script
+   No dependencies. Vanilla JS only.
+   ============================================================ */
 
-
-// ---------- PLACES DATA ----------
+// ---------- Places Data ----------
 const PLACES = [
-{
-name: "Sea Garden",
-type: "Tourist Place",
-lat: 43.206,
-lon: 27.932
-},
-{
-name: "Varna Cathedral",
-type: "Tourist Place",
-lat: 43.214,
-lon: 27.915
-},
-{
-name: "The Social Teahouse",
-type: "Cafe",
-lat: 43.208,
-lon: 27.919
-},
-{
-name: "Happy Bar & Grill",
-type: "Restaurant",
-lat: 43.213,
-lon: 27.921
-},
-{
-name: "Local Art Shop",
-type: "Local Business",
-lat: 43.210,
-lon: 27.918
-}
+  {
+    id: 1,
+    name: "Морска градина",
+    category: "Tourist Place",
+    description: "Най-големият и известен обществен парк във Варна, разположен по протежение на бреговата линия.",
+    city: "Varna",
+    lat: 43.2077,
+    lng: 27.9218
+  },
+  {
+    id: 2,
+    name: "Cathedral of the Assumption",
+    category: "Tourist Place",
+    description: "Катедралният храм Успение Богородично е един от символите на града.",
+    city: "Varna",
+    lat: 43.2085,
+    lng: 27.9136
+  },
+  {
+    id: 3,
+    name: "The Social Teahouse",
+    category: "Cafe",
+    description: "Уютно място за чай, кафе и събития, с фокус върху социалното предприемачество.",
+    city: "Varna",
+    lat: 43.2141,
+    lng: 27.9147
+  },
+  {
+    id: 5,
+    name: "Varna Mall",
+    category: "Local Business",
+    description: "Голям търговски център с разнообразни магазини, кино и места за хранене.",
+    city: "Varna",
+    lat: 43.2200,
+    lng: 27.8900
+  }
 ];
 
+// ---------- Category Helpers ----------
+const CATEGORY_BADGE = {
+  "Cafe":           "badge-cafe",
+  "Restaurant":     "badge-restaurant",
+  "Tourist Place":  "badge-tourist",
+  "Local Business": "badge-business"
+};
 
-// ---------- BLOG POSTS ----------
-const BLOG_POSTS = [
-{
-id:1,
-title:"Top 5 Places to Visit in Varna",
-date:"2026-03-14",
-excerpt:"Discover the best cultural and tourist spots in Varna.",
-content:`
-<p>Varna is one of the most beautiful cities on the Black Sea.</p>
+const CATEGORY_SVG = {
+  "Tourist Place":  `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+  "Cafe":           `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>`,
+  "Restaurant":     `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>`,
+  "Local Business": `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`
+};
 
-<p>Must visit places include:</p>
-
-<ul>
-<li>Sea Garden</li>
-<li>Varna Cathedral</li>
-<li>Roman Baths</li>
-<li>Archaeological Museum</li>
-<li>Varna Beach</li>
-</ul>
-
-<p>These places represent the culture and history of the city.</p>
-`
-},
-{
-id:2,
-title:"Best Cafes in Varna",
-date:"2026-03-10",
-excerpt:"Our favorite cafes for coffee, meetings and work.",
-content:`
-<p>Varna has many cozy cafes perfect for relaxing.</p>
-
-<p>Recommended:</p>
-
-<ul>
-<li>The Social Teahouse</li>
-<li>Brew & Co</li>
-<li>43.12 Cafe</li>
-</ul>
-`
-}
-];
-
-
-// ===============================
-// NAVIGATION
-// ===============================
-
-function showPage(page){
-
-document.querySelectorAll(".page").forEach(p=>{
-p.style.display="none"
-})
-
-const el = document.getElementById(page)
-
-if(el){
-el.style.display="block"
+function getBadgeClass(category) {
+  return CATEGORY_BADGE[category] || "badge-default";
 }
 
-if(page==="directory"){
-renderDirectory()
+function getCategorySvg(category) {
+  return CATEGORY_SVG[category] || `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
 }
 
-if(page==="map"){
-renderMapSidebar()
+// ---------- Map Helpers ----------
+function buildMapUrl(place) {
+  if (!place || place.lat == null || place.lng == null) {
+    return "https://www.openstreetmap.org/export/embed.html?bbox=27.8%2C43.15%2C28%2C43.25&layer=mapnik&marker=43.2141%2C27.9147";
+  }
+  const m = 0.05;
+  const bbox = `${place.lng - m}%2C${place.lat - m}%2C${place.lng + m}%2C${place.lat + m}`;
+  return `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${place.lat}%2C${place.lng}`;
 }
 
-if(page==="blog"){
-renderBlog()
+// ---------- Render: Directory ----------
+function renderDirectory() {
+  const grid = document.getElementById("places-grid");
+  if (!grid) return;
+
+  grid.innerHTML = PLACES.map(p => {
+    const badgeClass = getBadgeClass(p.category);
+    const svg = getCategorySvg(p.category);
+    return `
+      <div class="place-card">
+        <div class="place-card-header">
+          <div class="place-card-top">
+            <div>
+              <h3 class="place-name">${p.name}</h3>
+              <div class="place-city">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                ${p.city}
+              </div>
+            </div>
+            <span class="badge ${badgeClass}">${svg} ${p.category}</span>
+          </div>
+        </div>
+        <div class="place-card-body">
+          <p class="place-desc">${p.description}</p>
+        </div>
+      </div>
+    `;
+  }).join("");
 }
 
+// ---------- Render: Map Sidebar ----------
+let selectedPlaceId = null;
+
+function renderMapSidebar() {
+  const list = document.getElementById("sidebar-list");
+  if (!list) return;
+
+  list.innerHTML = PLACES.map(p => {
+    const hasCoords = p.lat != null && p.lng != null;
+    const isActive = selectedPlaceId === p.id;
+    const badgeClass = getBadgeClass(p.category);
+    const svg = getCategorySvg(p.category);
+
+    const coordsHtml = hasCoords
+      ? `<span class="sidebar-item-coords">📍 ${p.lat.toFixed(4)}, ${p.lng.toFixed(4)}</span>`
+      : `<span class="sidebar-item-coords no-coords">📍 No coordinates</span>`;
+
+    return `
+      <button
+        class="sidebar-item ${isActive ? "active" : ""} ${!hasCoords ? "disabled" : ""}"
+        data-id="${p.id}"
+        ${!hasCoords ? "disabled" : ""}
+      >
+        <div class="sidebar-item-top">
+          <span class="sidebar-item-name">${p.name}</span>
+          <span class="badge ${badgeClass}">${svg} ${p.category}</span>
+        </div>
+        <p class="sidebar-item-desc">${p.description}</p>
+        ${coordsHtml}
+      </button>
+    `;
+  }).join("");
+
+  // Attach click events
+  list.querySelectorAll(".sidebar-item:not(.disabled)").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = parseInt(btn.dataset.id);
+      selectedPlaceId = id;
+      updateMap();
+      renderMapSidebar();
+    });
+  });
 }
 
+function renderLegend() {
+  const container = document.getElementById("legend-list");
+  if (!container) return;
 
-// ===============================
-// DIRECTORY
-// ===============================
+  const categories = [
+    { cat: "Tourist Place" },
+    { cat: "Cafe" },
+    { cat: "Restaurant" },
+    { cat: "Local Business" }
+  ];
 
-function renderDirectory(){
-
-const container = document.getElementById("directory-list")
-
-if(!container) return
-
-container.innerHTML=""
-
-PLACES.forEach(place=>{
-
-const card = document.createElement("div")
-
-card.className="directory-card"
-
-card.innerHTML=`
-<h3>${place.name}</h3>
-<p>${place.type}</p>
-`
-
-container.appendChild(card)
-
-})
-
+  container.innerHTML = categories.map(({ cat }) => {
+    const count = PLACES.filter(p => p.category === cat && p.lat != null && p.lng != null).length;
+    const svg = getCategorySvg(cat);
+    return `
+      <div class="legend-item">
+        ${svg}
+        <span>${cat}</span>
+        <span class="legend-count">${count}</span>
+      </div>
+    `;
+  }).join("");
 }
 
+function updateMap() {
+  const iframe = document.getElementById("map-iframe");
+  const footer = document.getElementById("map-footer");
+  const subtitle = document.getElementById("map-subtitle");
+  if (!iframe) return;
 
-// ===============================
-// MAP
-// ===============================
+  const place = selectedPlaceId != null ? PLACES.find(p => p.id === selectedPlaceId) : null;
+  iframe.src = buildMapUrl(place);
 
-function renderMapSidebar(){
+  if (footer) {
+    footer.innerHTML = `<p>📍 ${place ? place.name : "Varna, Bulgaria"}</p>`;
+    if (place && place.lat != null) {
+      footer.innerHTML += `<p style="font-size:0.75rem;font-family:monospace;margin-top:0.25rem;color:var(--muted-fg)">${place.lat.toFixed(4)}, ${place.lng.toFixed(4)}</p>`;
+    }
+  }
 
-const list = document.getElementById("sidebar-list")
-
-if(!list) return
-
-list.innerHTML=""
-
-PLACES.forEach(place=>{
-
-const item = document.createElement("div")
-
-item.className="sidebar-item"
-
-item.innerText = place.name
-
-item.onclick = ()=>{
-
-showPlace(place)
-
+  if (subtitle) {
+    subtitle.textContent = place ? `📍 ${place.name}` : "Click on any place to see it on the map";
+  }
 }
 
-list.appendChild(item)
+// ---------- Page Routing ----------
+function showPage(pageId) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".nav-link").forEach(l => {
+    l.classList.toggle("active", l.dataset.page === pageId);
+  });
 
-})
+  const target = document.getElementById(pageId);
+  if (target) {
+    target.classList.add("active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
+  if (pageId === "directory") renderDirectory();
+  if (pageId === "map") {
+    renderMapSidebar();
+    renderLegend();
+    updateMap();
+  }
 }
 
-
-function showPlace(place){
-
-const iframe = document.getElementById("map-iframe")
-
-if(!iframe) return
-
-iframe.src = `https://www.openstreetmap.org/export/embed.html?bbox=${place.lon-0.01},${place.lat-0.01},${place.lon+0.01},${place.lat+0.01}&layer=mapnik&marker=${place.lat},${place.lon}`
-
+function getPageFromHash() {
+  const hash = window.location.hash.replace("#", "");
+  return ["home", "directory", "map"].includes(hash) ? hash : "home";
 }
 
+// ---------- Init ----------
+document.addEventListener("DOMContentLoaded", () => {
+  // Footer year
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// ===============================
-// BLOG
-// ===============================
+  // Handle all nav link clicks
+  document.querySelectorAll("[data-page]").forEach(el => {
+    el.addEventListener("click", e => {
+      const page = el.dataset.page;
+      if (page) {
+        e.preventDefault();
+        history.pushState(null, "", "#" + page);
+        showPage(page);
+      }
+    });
+  });
 
-function renderBlog(){
+  // Handle browser back/forward
+  window.addEventListener("popstate", () => showPage(getPageFromHash()));
 
-const container = document.getElementById("blog-posts")
-
-if(!container) return
-
-container.innerHTML=""
-
-BLOG_POSTS.forEach(post=>{
-
-const card = document.createElement("div")
-
-card.className="blog-card"
-
-card.innerHTML=`
-<h3>${post.title}</h3>
-<p>${post.date}</p>
-<p>${post.excerpt}</p>
-<button onclick="openBlog(${post.id})">Read more</button>
-`
-
-container.appendChild(card)
-
-})
-
-}
-
-
-function openBlog(id){
-
-const post = BLOG_POSTS.find(p=>p.id===id)
-
-if(!post) return
-
-let modal = document.getElementById("blog-modal")
-
-if(!modal){
-
-modal = document.createElement("div")
-
-modal.id="blog-modal"
-
-modal.style.position="fixed"
-modal.style.top="0"
-modal.style.left="0"
-modal.style.width="100%"
-modal.style.height="100%"
-modal.style.background="rgba(0,0,0,0.6)"
-modal.style.display="flex"
-modal.style.justifyContent="center"
-modal.style.alignItems="center"
-
-modal.innerHTML=`
-<div style="background:white;padding:30px;max-width:700px;width:90%;border-radius:10px;position:relative">
-
-<button id="closeBlog" style="position:absolute;top:10px;right:10px">X</button>
-
-<div id="blogContent"></div>
-
-</div>
-`
-
-document.body.appendChild(modal)
-
-}
-
-document.getElementById("blogContent").innerHTML=`
-<h2>${post.title}</h2>
-<p>${post.date}</p>
-${post.content}
-`
-
-modal.style.display="flex"
-
-document.getElementById("closeBlog").onclick=()=>{
-modal.style.display="none"
-}
-
-}
-
-
-// ===============================
-// FOOTER YEAR
-// ===============================
-
-const year = document.getElementById("year")
-
-if(year){
-year.innerText = new Date().getFullYear()
-}
-
-
-// ===============================
-// INITIAL PAGE
-// ===============================
-
-showPage("home")
+  // Initial page
+  showPage(getPageFromHash());
+}); 
