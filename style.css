@@ -602,4 +602,14 @@ button { cursor: pointer; font-family: var(--font-sans); border: none; backgroun
 @media (max-width: 640px) {
   .nav-btn { display: none; }
   .hero { min-height: 75vh; }
+   .blog-post {
+background: #1c1c1c;
+padding: 20px;
+margin: 20px 0;
+border-radius: 8px;
+}
+
+.blog-post h3 {
+color: #d4af37;
+}
 }
