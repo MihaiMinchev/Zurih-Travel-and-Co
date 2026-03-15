@@ -611,5 +611,46 @@ border-radius: 8px;
 
 .blog-post h3 {
 color: #d4af37;
+   /* ================= BLOG ================= */
+
+#blog {
+margin-top: 80px;
+padding: 40px 20px;
+background: var(--card-bg);
+border-radius: 12px;
+}
+
+#blog h2 {
+font-size: 2rem;
+margin-bottom: 30px;
+color: var(--accent);
+}
+
+#blog-posts {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 20px;
+}
+
+.blog-post {
+background: var(--bg-secondary);
+padding: 20px;
+border-radius: 10px;
+transition: transform 0.2s ease;
+}
+
+.blog-post:hover {
+transform: translateY(-5px);
+}
+
+.blog-post h3 {
+color: var(--accent);
+margin-bottom: 10px;
+}
+
+.blog-post p {
+color: var(--text-secondary);
+line-height: 1.5;
+}
 }
 }
