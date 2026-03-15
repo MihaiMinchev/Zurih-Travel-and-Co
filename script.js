@@ -217,8 +217,12 @@ function showPage(pageId) {
 }
 
 function getPageFromHash() {
-  const hash = window.location.hash.replace("#", "");
-return ["home", "directory", "map", "blog"].includes(hash) ? hash : "home";
+
+const hash = window.location.hash.replace("#","");
+
+return ["home","directory","map","blog"].includes(hash) ? hash : "home";
+
+}
 }
 
 // ---------- Init ----------
