@@ -1,4 +1,4 @@
-// blog.js — Zurih Travel Blog
+// Zurih Travel Blog System
 
 const blogPosts = [
   {
@@ -19,17 +19,28 @@ const blogPosts = [
 ];
 
 function loadBlog() {
-  const blogContainer = document.getElementById("blog-posts");
-  if (!blogContainer) return;
 
-  blogContainer.innerHTML = blogPosts.map(post => `
-    <article class="blog-post">
+  const container = document.getElementById("blog-posts");
+
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  blogPosts.forEach(post => {
+
+    const article = document.createElement("article");
+    article.className = "blog-post";
+
+    article.innerHTML = `
       <h2>${post.title}</h2>
       <p class="blog-date">${post.date}</p>
       <p>${post.content}</p>
-    </article>
-  `).join('');
+    `;
+
+    container.appendChild(article);
+
+  });
+
 }
 
-// Initialize blog on page load
 document.addEventListener("DOMContentLoaded", loadBlog);
