@@ -609,11 +609,22 @@ margin: 20px 0;
 border-radius: 8px;
 }
 
- /* BLOG */
+/* BLOG PAGE */
 
 #blog{
 padding:80px 0;
-background:#f9fafb;
+background:#f5f7fa;
+}
+
+#blog h1{
+font-size:36px;
+margin-bottom:40px;
+text-align:center;
+}
+
+#blog-posts{
+max-width:900px;
+margin:auto;
 }
 
 .blog-post{
@@ -625,15 +636,13 @@ box-shadow:0 6px 18px rgba(0,0,0,0.08);
 }
 
 .blog-post h2{
-margin-bottom:10px;
 font-size:22px;
+margin-bottom:10px;
 }
 
 .blog-date{
 color:#777;
 font-size:14px;
 margin-bottom:10px;
-}
-}
 }
 }
